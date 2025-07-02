@@ -34,6 +34,15 @@ Activate the pipenv shell:
 pipenv shell
 ```
 
+
+The `Pipfile` defines all dependencies needed for this project.
+Use the pipenv environment to keep dependencies isolated and consistent.
+To add a new dependency, run:
+
+```bash
+pipenv install package-name
+```
+
 Run the Python script by specifying its relative path, for example:
 
 ```bash
