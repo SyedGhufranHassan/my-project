@@ -1,60 +1,101 @@
 # CivilCRM.ai Scrapers
 
-This repository contains multiple scraper scripts organized into separate folders. Each folder contains Python scripts used to collect or process data.
+This repository contains multiple scrapers to extract campaign finance and expenditure data from different US state government websites. Each scraper is organized by state and follows a consistent class-based structure using a common `BaseScraper`.
 
 ---
 
-## Setup Instructions
+## 📦 Project Setup
 
 ### 1. Install Pipenv
 
-If you don’t have Pipenv installed, install it using:
+Install `pipenv` if not already available:
 
 ```bash
 pip3 install pipenv
 ```
 
-Pipenv is used to create and manage a virtual environment for this project, ensuring consistent package versions and dependencies.
-
-2. **Create the Environment and Install Dependencies**
-From the project root folder (where the Pipfile is located), run:
+2. Install Dependencies
+From the project root (where the Pipfile is located):
 
 ```bash
 pipenv install
 ```
 
-This command creates a virtual environment and installs all required packages specified in the Pipfile.
-
-3. **Running the Scraper Scripts**
-To run any Python script inside the pipenv environment:
-
-Activate the pipenv shell:
+3. Activate the Environment
+Start a shell inside the virtual environment:
 
 ```bash
 pipenv shell
 ```
 
+ℹ️ All scrapers should be run inside this environment to ensure the correct dependencies are used.
 
-The `Pipfile` defines all dependencies needed for this project.
-Use the pipenv environment to keep dependencies isolated and consistent.
-To add a new dependency, run:
-
-```bash
-pipenv install package-name
-```
-
-Run the Python script by specifying its relative path, for example:
+🚀 Running Each State Scraper
+🔹 AR - Arkansas
+Path: scrapers/ar/scraper.py
 
 ```bash
-python3 AR/AR_Scraper.py
-python3 AZ/AZ_Cont_Scraper.py
-python3 AZ/AZ_Exp_Scraper.py
+pipenv run python -m scrapers.ar.scraper
 ```
 
-Replace the path with the actual location of the script you want to run.
+🔹 AZ - Arizona
+This state has two separate scrapers:
 
-Exit the pipenv shell when finished:
+1. Contributions Scraper
+Path: scrapers/az/cont_scraper.py
 
 ```bash
-exit
+pipenv run python -m scrapers.az.contscraper
 ```
+
+2. Expenditures Scraper
+Path: scrapers/az/exp_scraper.py
+
+```bash
+pipenv run python -m scrapers.az.expscraper
+```
+
+🔹 UT - Utah
+Path: scrapers/ut/scraper.py
+
+```bash
+pipenv run python -m scrapers.ut.scraper
+```
+
+🔹 VA - Virginia
+Path: scrapers/va/scraper.py
+
+```bash
+pipenv run python -m scrapers.va.scraper
+```
+
+🔹 NJ - New Jersey
+Path: scrapers/nj/scraper.py
+
+```bash
+pipenv run python -m scrapers.nj.scraper
+```
+
+🧪 Base Scraper
+All scrapers extend BaseScraper, defined in:
+
+```python
+
+# scrapers/base_scraper.py
+
+class BaseScraper:
+    def __init__(self):
+        pass
+
+```
+
+Customize this base class later to add shared functionality like logging, retries, output management, etc.
+
+💡 Notes
+Each scraper handles its own output saving and data formatting.
+
+Output files are usually saved in an output/ folder inside the respective state directory.
+
+Ensure stable internet connection and avoid rate-limiting issues with too many requests.
+
+For large years/party ranges (e.g., NJ), the script may take time to complete.
