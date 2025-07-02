@@ -11,7 +11,7 @@ This repository contains multiple scraper scripts organized into separate folder
 If you don’t have Pipenv installed, install it using:
 
 ```bash
-pip install pipenv
+pip3 install pipenv
 ```
 
 Pipenv is used to create and manage a virtual environment for this project, ensuring consistent package versions and dependencies.
@@ -37,8 +37,9 @@ pipenv shell
 Run the Python script by specifying its relative path, for example:
 
 ```bash
-python3 folder1/script1.py
-python3 folder3/another_script.py
+python3 AR/AR_Scraper.py
+python3 AZ/AZ_Cont_Scraper.py
+python3 AZ/AZ_Exp_Scraper.py
 ```
 
 Replace the path with the actual location of the script you want to run.
