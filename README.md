@@ -76,26 +76,3 @@ Path: scrapers/nj/scraper.py
 pipenv run python -m scrapers.nj.scraper
 ```
 
-🧪 Base Scraper
-All scrapers extend BaseScraper, defined in:
-
-```python
-
-# scrapers/base_scraper.py
-
-class BaseScraper:
-    def __init__(self):
-        pass
-
-```
-
-Customize this base class later to add shared functionality like logging, retries, output management, etc.
-
-💡 Notes
-Each scraper handles its own output saving and data formatting.
-
-Output files are usually saved in an output/ folder inside the respective state directory.
-
-Ensure stable internet connection and avoid rate-limiting issues with too many requests.
-
-For large years/party ranges (e.g., NJ), the script may take time to complete.
