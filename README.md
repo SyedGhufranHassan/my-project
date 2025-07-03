@@ -34,6 +34,8 @@ Note:
 
 All scraper scripts should be executed within this environment to ensure consistent dependency management and avoid version conflicts.
 
+---
+
 🛠️ BaseScraper Overview:
 
 The BaseScraper is a foundational class that all state-specific scrapers inherit from. It provides common utilities such as:
@@ -50,10 +52,14 @@ The BaseScraper is a foundational class that all state-specific scrapers inherit
 
 By centralizing these common functions, the BaseScraper ensures that each scraper can focus solely on state-specific scraping logic, improving maintainability and extensibility.
 
+---
+
 🚀 Running Each State Scraper
+
 Below is the list of available state scrapers along with their paths and how to run them.
 
-- Arkansas (AR)
+**Arkansas (AR)**
+
 Purpose: Scrapes campaign finance and expenditure data for Arkansas.
 
 Script path: scrapers/ar/scraper.py
@@ -64,10 +70,11 @@ Run command:
 pipenv run python -m scrapers.ar.scraper
 ``` 
 
-Arizona (AZ)
+**Arizona (AZ)**
+
 Arizona has two distinct scrapers for different data types:
 
-Contributions Scraper
+**Contributions Scraper**
 
 Path: scrapers/az/cont_scraper.py
 
@@ -77,7 +84,7 @@ Run command:
 pipenv run python -m scrapers.az.contscraper
 ```
 
-Expenditures Scraper
+**Expenditures Scraper**
 
 Path: scrapers/az/exp_scraper.py
 
@@ -87,7 +94,8 @@ Run command:
 pipenv run python -m scrapers.az.expscraper
 ```
 
-Utah (UT)
+**Utah (UT)**
+
 Purpose: Scrapes data related to Utah’s campaign finance.
 
 Script path: scrapers/ut/scraper.py
@@ -98,7 +106,8 @@ Run command:
 pipenv run python -m scrapers.ut.scraper
 ```
 
-Virginia (VA)
+**Virginia (VA)**
+
 Purpose: Scrapes Virginia’s campaign finance and expenditure data.
 
 Script path: scrapers/va/scraper.py
@@ -109,7 +118,8 @@ Run command:
 pipenv run python -m scrapers.va.scraper
 ```
 
-New Jersey (NJ)
+**New Jersey (NJ)**
+
 Purpose: Extracts detailed campaign finance records for New Jersey.
 
 Script path: scrapers/nj/scraper.py
@@ -119,6 +129,7 @@ Run command:
 ```bash
 pipenv run python -m scrapers.nj.scraper
 ```
+---
 
 ### Additional Notes
 
