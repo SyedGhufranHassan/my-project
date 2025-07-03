@@ -36,7 +36,7 @@ All scraper scripts should be executed within this environment to ensure consist
 
 ---
 
-🛠️ BaseScraper Overview:
+### 🛠️ BaseScraper Overview:
 
 The BaseScraper is a foundational class that all state-specific scrapers inherit from. It provides common utilities such as:
 
@@ -54,15 +54,15 @@ By centralizing these common functions, the BaseScraper ensures that each scrape
 
 ---
 
-🚀 Running Each State Scraper
+### 🚀 Running Each State Scraper
 
 Below is the list of available state scrapers along with their paths and how to run them.
 
-**Arkansas (AR)**
+#### Arkansas (AR)
 
-Purpose: Scrapes campaign finance and expenditure data for Arkansas.
+**Purpose:** Scrapes campaign finance and expenditure data for Arkansas.
 
-Script path: scrapers/ar/scraper.py
+**Script path:** scrapers/ar/scraper.py
 
 Run command:
 
@@ -70,13 +70,13 @@ Run command:
 pipenv run python -m scrapers.ar.scraper
 ``` 
 
-**Arizona (AZ)**
+#### Arizona (AZ)
 
 Arizona has two distinct scrapers for different data types:
 
 **Contributions Scraper**
 
-Path: scrapers/az/cont_scraper.py
+**Path:** scrapers/az/cont_scraper.py
 
 Run command:
 
@@ -86,7 +86,7 @@ pipenv run python -m scrapers.az.contscraper
 
 **Expenditures Scraper**
 
-Path: scrapers/az/exp_scraper.py
+**Path:** scrapers/az/exp_scraper.py
 
 Run command:
 
@@ -94,11 +94,11 @@ Run command:
 pipenv run python -m scrapers.az.expscraper
 ```
 
-**Utah (UT)**
+#### Utah (UT)
 
-Purpose: Scrapes data related to Utah’s campaign finance.
+**Purpose:** Scrapes data related to Utah’s campaign finance.
 
-Script path: scrapers/ut/scraper.py
+**Script path:** scrapers/ut/scraper.py
 
 Run command:
 
@@ -106,11 +106,11 @@ Run command:
 pipenv run python -m scrapers.ut.scraper
 ```
 
-**Virginia (VA)**
+#### Virginia (VA)
 
-Purpose: Scrapes Virginia’s campaign finance and expenditure data.
+**Purpose:** Scrapes Virginia’s campaign finance and expenditure data.
 
-Script path: scrapers/va/scraper.py
+**Script path:** scrapers/va/scraper.py
 
 Run command:
 
@@ -118,11 +118,11 @@ Run command:
 pipenv run python -m scrapers.va.scraper
 ```
 
-**New Jersey (NJ)**
+#### New Jersey (NJ)
 
-Purpose: Extracts detailed campaign finance records for New Jersey.
+**Purpose:** Extracts detailed campaign finance records for New Jersey.
 
-Script path: scrapers/nj/scraper.py
+**Script path:** scrapers/nj/scraper.py
 
 Run command:
 
