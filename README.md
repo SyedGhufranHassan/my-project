@@ -1,140 +1,100 @@
-# CivilCRM.ai Scrapers
+# 📚 Student Gradebook (Go CLI Application)
 
-This repository contains multiple web scrapers designed to extract campaign finance data from various US state government websites. Each scraper is organized by state and built using a consistent class-based approach, inheriting from a shared `BaseScraper` to promote code reuse and maintainability.
+A simple command-line application written in Go for managing student records and grades. Users can add students with their grades, calculate average grades, list all students, and delete student records interactively.
 
----
+## 🚀 Features
 
-## 📦 Project Setup
+- ✅ Add a student and their grades  
+- 📊 Calculate and view a student's average grade  
+- 📋 List all students with their grades  
+- ❌ Delete a student record  
+- 🛑 Exit the application gracefully  
 
-### 1. Install Pipenv
+## 🗂️ Project Structure
 
-If you don’t have `pipenv` installed yet, you can install it using:
+```
+student-gradebook/
+├── go.mod                 # Go module definition
+├── main.go                # Main application logic & CLI interface
+├── README.md
+├── reader.go              # Utility to read user input from console
+├── student/               # Handles student data and grade operations
+│   ├── student.go         # Core functions to manage the gradebook
+│   └── student_types.go   # Student struct definition (future extensibility)
+└── utils/
+    └── parse.go           # Utility function to parse input grades
 
-```bash
-pip3 install pipenv
 ```
 
-2. Install Dependencies
+## 📦 Installation
 
-From the project root directory (where the Pipfile resides), install all required dependencies:
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/student-gradebook.git
+   cd student-gradebook
+   ```
 
-```bash
-pipenv install
+2. **Run the Application**
+   ```bash
+   go run .
+   ```
+
+## 💻 How to Use
+
+When you run the app, you'll see a menu like this:
+
+```
+--- Student Gradebook ---
+1. Add Student
+2. Get Average
+3. List All Students
+4. Delete Student
+5. Exit
+Enter your choice:
 ```
 
-3. Activate the Virtual Environment
+### ✅ 1. Add Student
+- Input a name.
+- Provide grades separated by commas (e.g., `90, 85, 78`).
 
-To enter the pipenv-managed virtual environment shell, run:
+### 📊 2. Get Average
+- Enter the name of the student to see their average grade.
 
-```bash
-pipenv shell
+### 📋 3. List All Students
+- Displays all student names and their grades.
+
+### ❌ 4. Delete Student
+- Enter the student name to remove them from the system.
+
+### 🛑 5. Exit
+- Exits the application.
+
+## 🧠 Example Usage
+
+```
+--- Student Gradebook ---
+1. Add Student
+2. Get Average
+3. List All Students
+4. Delete Student
+5. Exit
+Enter your choice: 1
+Enter student name: Alice
+Enter grades (comma-separated): 88, 92, 79
+Student added successfully!
+
+Enter your choice: 2
+Enter student name: Alice
+Average grade for Alice: 86.33
 ```
 
-Note:
+## 🛠️ Tech Stack
 
-All scraper scripts should be executed within this environment to ensure consistent dependency management and avoid version conflicts.
+- **Language**: Go  
+- **Standard Packages**: `fmt`, `os`, `bufio`, `strings`, `strconv`
 
----
+## 📌 Notes
 
-### 🛠️ BaseScraper Overview:
-
-The BaseScraper is a foundational class that all state-specific scrapers inherit from. It provides common utilities such as:
-
-- Session management (e.g., handling persistent headers, cookies)
-
-- Request retries and error handling
-
-- Logging and progress reporting
-
-- File and folder setup for outputs
-
-- Common helper methods to reduce code duplication
-
-By centralizing these common functions, the BaseScraper ensures that each scraper can focus solely on state-specific scraping logic, improving maintainability and extensibility.
-
----
-
-### 🚀 Running Each State Scraper
-
-Below is the list of available state scrapers along with their paths and how to run them.
-
-#### Arkansas (AR)
-
-**Purpose:** Scrapes campaign finance and expenditure data for Arkansas.
-
-**Script path:** scrapers/ar/scraper.py
-
-Run command:
-
-```bash
-pipenv run python -m scrapers.ar.scraper
-``` 
-
-#### Arizona (AZ)
-
-Arizona has two distinct scrapers for different data types:
-
-**Contributions Scraper**
-
-**Path:** scrapers/az/cont_scraper.py
-
-Run command:
-
-```bash
-pipenv run python -m scrapers.az.contscraper
-```
-
-**Expenditures Scraper**
-
-**Path:** scrapers/az/exp_scraper.py
-
-Run command:
-
-```bash
-pipenv run python -m scrapers.az.expscraper
-```
-
-#### Utah (UT)
-
-**Purpose:** Scrapes data related to Utah’s campaign finance.
-
-**Script path:** scrapers/ut/scraper.py
-
-Run command:
-
-```bash
-pipenv run python -m scrapers.ut.scraper
-```
-
-#### Virginia (VA)
-
-**Purpose:** Scrapes Virginia’s campaign finance and expenditure data.
-
-**Script path:** scrapers/va/scraper.py
-
-Run command:
-
-```bash
-pipenv run python -m scrapers.va.scraper
-```
-
-#### New Jersey (NJ)
-
-**Purpose:** Extracts detailed campaign finance records for New Jersey.
-
-**Script path:** scrapers/nj/scraper.py
-
-Run command:
-
-```bash
-pipenv run python -m scrapers.nj.scraper
-```
----
-
-### Additional Notes
-
-- All scrapers save their outputs in state-specific output directories within their respective folders (e.g., scrapers/nj/output/ for New Jersey).
-- The BaseScraper class contains common utilities and methods shared by all scrapers, enabling easier maintenance and feature extension.
-- For any scraper that involves handling large datasets or paginated API responses, the scripts automatically manage pagination and retries on transient errors.
-- Please ensure you have a stable internet connection when running scrapers to avoid HTTP errors.
+- This project uses an in-memory map to store data. All student records will be lost once the program exits.
+- Designed for simplicity and extensibility.
 
