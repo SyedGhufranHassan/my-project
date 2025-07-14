@@ -1,100 +1,108 @@
-# 📚 Student Gradebook (Go CLI Application)
+# 📚 Student Gradebook (Web API using Go + Chi)
 
-A simple command-line application written in Go for managing student records and grades. Users can add students with their grades, calculate average grades, list all students, and delete student records interactively.
+A simple RESTful API built in Go using the Chi router to manage student records and grades. Users can add students, view their average grade, list all students, and delete student records—all via HTTP endpoints.
+
+---
 
 ## 🚀 Features
 
-- ✅ Add a student and their grades  
+- ✅ Add a student and their grades via POST request  
 - 📊 Calculate and view a student's average grade  
 - 📋 List all students with their grades  
-- ❌ Delete a student record  
-- 🛑 Exit the application gracefully  
+- ❌ Delete a student record by name  
+- 🌐 RESTful API with clean routing using Go-Chi  
+
+---
 
 ## 🗂️ Project Structure
 
 ```
 student-gradebook/
-├── go.mod                 # Go module definition
-├── main.go                # Main application logic & CLI interface
 ├── README.md
-├── reader.go              # Utility to read user input from console
-├── student/               # Handles student data and grade operations
-│   ├── student.go         # Core functions to manage the gradebook
-│   └── student_types.go   # Student struct definition (future extensibility)
-└── utils/
-    └── parse.go           # Utility function to parse input grades
-
+├── go.mod                 # Go module definition
+├── main.go                # Web server with Chi HTTP routes
+├── student/               # Gradebook logic and types
+│   ├── student.go         # Core logic for grade management
+│   └── student_types.go   # Student struct
+└── utils/                 # (Optional) grade parser
+    └── parse.go
 ```
 
-## 📦 Installation
+---
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/student-gradebook.git
-   cd student-gradebook
-   ```
+## 📦 Installation & Running
 
-2. **Run the Application**
-   ```bash
-   go run .
-   ```
+### 1. Clone the Repository
 
-## 💻 How to Use
-
-When you run the app, you'll see a menu like this:
-
-```
---- Student Gradebook ---
-1. Add Student
-2. Get Average
-3. List All Students
-4. Delete Student
-5. Exit
-Enter your choice:
+```bash
+git clone https://github.com/yourusername/student-gradebook.git
+cd student-gradebook
 ```
 
-### ✅ 1. Add Student
-- Input a name.
-- Provide grades separated by commas (e.g., `90, 85, 78`).
+### 2. Initialize Go Modules & Install Dependencies
 
-### 📊 2. Get Average
-- Enter the name of the student to see their average grade.
-
-### 📋 3. List All Students
-- Displays all student names and their grades.
-
-### ❌ 4. Delete Student
-- Enter the student name to remove them from the system.
-
-### 🛑 5. Exit
-- Exits the application.
-
-## 🧠 Example Usage
-
+```bash
+go mod tidy
 ```
---- Student Gradebook ---
-1. Add Student
-2. Get Average
-3. List All Students
-4. Delete Student
-5. Exit
-Enter your choice: 1
-Enter student name: Alice
-Enter grades (comma-separated): 88, 92, 79
-Student added successfully!
 
-Enter your choice: 2
-Enter student name: Alice
-Average grade for Alice: 86.33
+### 3. Run the Server
+
+```bash
+go run main.go
 ```
+
+The server will start at:  
+📍 `http://localhost:8080`
+
+---
+
+## 🌐 API Endpoints
+
+| Method | Endpoint                      | Description                    |
+|--------|-------------------------------|--------------------------------|
+| POST   | `/student`                    | Add a new student              |
+| GET    | `/student/{name}/average`     | Get average grade for student |
+| GET    | `/students`                   | List all students              |
+| DELETE | `/student/{name}`             | Delete a student               |
+
+---
+
+## 🧪 Example API Usage
+
+### ➕ Add Student
+```bash
+curl -X POST http://localhost:8080/student \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Ghufran","grades":[90,85,88]}'
+```
+
+### 📊 Get Average Grade
+```bash
+curl http://localhost:8080/student/Ghufran/average
+```
+
+### 📋 List All Students
+```bash
+curl http://localhost:8080/students
+```
+
+### ❌ Delete Student
+```bash
+curl -X DELETE http://localhost:8080/student/Ghufran
+```
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Language**: Go  
-- **Standard Packages**: `fmt`, `os`, `bufio`, `strings`, `strconv`
+- **Language:** Go (Golang)
+- **Router:** [Chi](https://github.com/go-chi/chi)
+- **Standard Libraries:** `net/http`, `encoding/json`, `fmt`, `strings`,`bufio`, `os`, etc.
+
+---
 
 ## 📌 Notes
 
-- This project uses an in-memory map to store data. All student records will be lost once the program exits.
-- Designed for simplicity and extensibility.
+- Data is stored in memory using Go maps. All records are lost when the app restarts.
+- Ideal for learning RESTful APIs and Go web development.
 
